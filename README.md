@@ -35,6 +35,7 @@ Le graphique ci dessus représente les boxplots des différentes variables, nous
 # II_ Analyse statistique des données
 
   #  1_ Statistiques descriptives des variables 
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/1248f292-1978-453a-b270-644b1c82866d)
 
 
 
