@@ -28,7 +28,7 @@ Certaines méthodes de Machine Learning sont trés sensible aux valeurs manquant
 #### - Outliers
 Les valeurs abbérantes sont des points qui ne suivent pas la distribution caractéristique du reste des données. Pour les détecter nous allons créer le boxplot des variables afin de visualiser les points extremes.
 
-![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/a3873571-d88e-4cf4-9fab-d673aecb69da)
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/9047bbce-d977-45c3-bd52-7597d0b7eab7)
 
 Le graphique ci-dessus représente les boxplots des différentes variables, nous avons ainsi constaté que seul la variable 'Price' possédait des valeurs extremes donc éviter des erreurs au niveau de nos estimations. De ce fait nous allons supprimer ces outliers en utilisant la méthode basée sur l'écart interquartile (IQR), nous passons alors d'une base de 50000 à 49941 observations soit 59 outliers supprimés. Une fois notre base de donnée néttoyer nous passer à l'analyse statistique des données.
 
