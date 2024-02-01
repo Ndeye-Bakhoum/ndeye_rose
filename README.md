@@ -103,3 +103,11 @@ Nous avons construit un modèle ANN en fixant un nombre de neurones à 1000 sur 
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/528c6160-1091-44d2-9310-300e43fa1afb)
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/9cc3ba75-f479-43a2-a25b-9513fe72fbb1)
 
+En gardant le meme nombre de couche cachées et en diminuant le nombre de neurones jusqu'à 500, nous construit un nouveau modèle. Le nombre de paramétres à entrainer est fixé à 254001. les erreurs diminue au fur et à mesure des itérations, à travers les résultats obtenus on peut dire que ce modèle est plus performant que le premier.
+
+#### - Optimisation avec GridSearchCV
+
+
+
+
+
