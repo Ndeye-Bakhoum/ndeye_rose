@@ -51,8 +51,9 @@ Le graphique ci-dessous représente les différentes modalités de la variable '
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/630262cc-8d2a-4a45-81a2-bda63676010e)
 
 ##  4_ Etude de la corrélation entre les variables
-![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/0cf171e4-1bd2-44ba-889e-d6b76799e8a1)
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/41242d05-e3dc-4a58-948d-86a20bdef437)
 
+L'etude de la corrélation entre nos variables est trés importante car il permet de détecter les liens existant ente nos variables. Nous constatons une realtion lineaire positive et importante entre le prix de vente et la surface de la maison. Autrement dit plus la surface est élevé et plus le prix de vente est élevé. On note également une trés légère corrélation entre le nombre de chambre et le prix de vente. A part ces variables, on note une des corrélations trés faibles. Donc pas de risque de multicolinarité.  
 
 
 
