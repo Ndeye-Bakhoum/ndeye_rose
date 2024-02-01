@@ -83,4 +83,6 @@ Dans le but de trouver des modèles plus perfomants que ceux obtenus précedemen
 ### - C=1
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/633e9b87-a362-43bb-a929-3382cdfde056)
 
-
+Avec un paramètre de régularisation (C=1), nous avons estimés également trois modèles en fesant varier le kernel. Nous constatons que les résultats obtenus par rapport au 6 modèles estimés ci-dessus sont les faibles. Nous constatons ainsi plus le paramétre C diminue et plus les modèles enregistrent d'erreurs de prévisions. Dans tout les cas les meilleurs modèles sont obtenus avec le kernel(linear).
+Des 9 modèles estimés, le meilleur est le  SVR(kernel='linear', C=100,  gamma="auto").
+NB!!! Nous avons utilisé le GridSearchCV afin de tester différents jeux de paramètres mais le code à touner des jours sans résultats
