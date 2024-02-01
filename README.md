@@ -106,7 +106,10 @@ Nous avons construit un modèle ANN en fixant un nombre de neurones à 1000 sur 
 En gardant le meme nombre de couche cachées et en diminuant le nombre de neurones jusqu'à 500, nous construit un nouveau modèle. Le nombre de paramétres à entrainer est fixé à 254001. les erreurs diminue au fur et à mesure des itérations, à travers les résultats obtenus on peut dire que ce modèle est plus performant que le premier.
 
 #### - Optimisation avec GridSearchCV
-
+Afin de déterminer les paramétres optimales pouvant aboutir à un modèle plus performant, nous avons décider de construire un modèle avec le GridSearchCV. Comme paramétres optimales nous recherchons le nombre de neurones, le nombre de couches cachées et la fonction d'activation. Ainsi le gridsearch réalise une validation croisé par 2fold se déclinant par des itérations jusqu'à l'obtention des meilleurs paramétres. Le modèle avec GridSearchCV nous donne ces paramétres:
+- n_neurones = 200
+- hidden_layer = 2
+- activation = 'relu'
 
 
 
