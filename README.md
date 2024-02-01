@@ -97,7 +97,9 @@ Les ANN (Artificial Neural Network) sont des modèles de machine learning qui so
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/85b1cf30-64f1-4fd5-867f-17529bb88d2d)
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/cf2f3885-b3bb-4c73-a29d-12ed3b9949b5)
 
-Nous avons construit un modèle ANN en fixant un nombre de neurones à 1000 sur deux couches cachés, la fonction d'activation utilisée sur ces couches est le 'relu'. La couche de sortie est fixée à 1 neurone. Le modèle est compilé en utilisant un optimiseur de type 'adam'
+Nous avons construit un modèle ANN en fixant un nombre de neurones à 1000 sur deux couches cachés, la fonction d'activation utilisée sur ces couches est le 'relu'. La couche de sortie est fixée à 1 neurone. Le modèle est compilé en utilisant un optimiseur de type 'adam'. On constate que le modèle fournit plus de 1000000 paramétres entrainables. Nous avons choisi 5 itérations sur l'ensemble de nos données pour l'apprentissage de notre modèle. la fonction de perte (loss) mesurant la différence entre les prédictions du modèle et les valeurs réelles est répresenté par le MSE (Mean Squared Error), elle diminue au fil des itérations.  
 
-
+#### - modèle2 : n_neurones = 500, Hidden_layer = 2, activation = 'relu'
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/528c6160-1091-44d2-9310-300e43fa1afb)
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/9cc3ba75-f479-43a2-a25b-9513fe72fbb1)
 
