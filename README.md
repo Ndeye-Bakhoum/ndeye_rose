@@ -53,10 +53,12 @@ Le graphique ci-dessous représente les différentes modalités de la variable '
 ##  4_ Etude de la corrélation entre les variables
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/41242d05-e3dc-4a58-948d-86a20bdef437)
 
-L'etude de la corrélation entre nos variables est trés importante car il permet de détecter les liens existant ente nos variables. Nous constatons une realtion lineaire positive et importante entre le prix de vente et la surface de la maison. Autrement dit plus la surface est élevé et plus le prix de vente est élevé. On note également une trés légère corrélation entre le nombre de chambre et le prix de vente. A part ces variables, on note une des corrélations trés faibles. Donc pas de risque de multicolinarité.  
+L'etude de la corrélation entre nos variables est trés importante car il permet de détecter les liens existant ente nos variables. Nous constatons une relation lineaire positive et importante entre le prix de vente et la surface de la maison. Autrement dit plus la surface est élevé et plus le prix de vente est élevé. On note également une trés légère corrélation entre le nombre de chambre et le prix de vente. A part ces variables, on note une des corrélations trés faibles. Donc pas de risque de multicolinarité.  
 
+##  5_ Etude de la relation entre les variables 'Price', 'Neighborhood' et 'SquareFeet'
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/5a7dc4e4-647e-4797-8923-35c8f92f436b)
 
-
+Nous constatons que la variable 'Neighborhood n'as pas de lien particulier entre les variables 'Price' et 'SquareFeet'. A savoir que le prix de vente des maisons ne dépend de la zone où elle est située, de meme ce n'est le fait qu'une maison soit situé en zone rural qu'elle aura une superficie plus importante
 
 
 
