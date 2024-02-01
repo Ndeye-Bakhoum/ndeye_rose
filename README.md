@@ -46,6 +46,7 @@ Le prix de vente maximun des maisons est estimé à 443335.494338 USD et le prix
 Ce graphique représente l'histogramme  du prix de vente des maisons. Nous constatons que le nombre de maisons vendus à moins de 100000 USD est trés faible tout comme le nombre de maisons vendus à plus de 370000 USD. Par contre on retrouvera beaucoup de maisons qui sont vendus entre 100000 et 300000 USD.
 
  ##  3_ Représentation grahique des modalités de la variable 'Neighborhood'
+Le graphique ci-dessous représente les différentes modalités de la variable 'Neighborhood'. Nous constatons que ces modalités sont répartis plus ou moins équitablement. On trouve que 33.2% des maisons sont situé en zone 'Urbain' contre 33.4% qui se situe en zone 'Rural' et pour ce qui concerne la banlieu 'Suburb' on n'y retrouve 33.4% des maisons vendus.
 
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/630262cc-8d2a-4a45-81a2-bda63676010e)
 
