@@ -30,15 +30,18 @@ Les valeurs abbérantes sont des points qui ne suivent pas la distribution carac
 
 
 
-Le graphique ci dessus représente les boxplots des différentes variables, nous avons ainsi constaté que seul la variable 'Price' possédait des valeurs extremes donc éviter des erreurs au niveau de nos estimations. De ce fait nous allons supprimer ces outliers en utilisant la méthode basée sur l'écart interquartile (IQR), nous passons alors d'une base de 50000 à 49941 observations soit 59 outliers supprimés. Une fois notre base de donnée néttoyernous passer à l'analyse statistique des données.
+Le graphique ci-dessus représente les boxplots des différentes variables, nous avons ainsi constaté que seul la variable 'Price' possédait des valeurs extremes donc éviter des erreurs au niveau de nos estimations. De ce fait nous allons supprimer ces outliers en utilisant la méthode basée sur l'écart interquartile (IQR), nous passons alors d'une base de 50000 à 49941 observations soit 59 outliers supprimés. Une fois notre base de donnée néttoyer nous passer à l'analyse statistique des données.
 
 # II_ Analyse statistique des données
 
-  #  1_ Statistiques descriptives des variables 
+  ##  1_ Statistiques descriptives des variables 
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/1248f292-1978-453a-b270-644b1c82866d)
+Le tableau ci-dessus représente les statistiques descriptives de nos différentes variables quantitatives. Nous pouvons constaté que la surface des maisons vendus varie entre 1000 et 2999 en pieds-carrées et que 50% de ces maisons ont une surface dépasssant les 2000 pieds-carrés. Ces maisons ont un maximum de 5 chambres et 3 salles de bains et on note que ces maisons dotées  en moyenne de 2 chambres et une salle de bains. La maison la plus ancienne a été construit il y'a 74 ans et la plus récente en 2021 c'est à dire il y'a 3 ans. 
+Le prix de vente maximun des maisons est estimé à 443335.494338 USD et le prix minimun est quant à lui fixé à 6124.032174 USD. On constate que les maisons sont vendus en moyenne à 224822.916361 USD.
 
-
-
+  ##  2_ Histogramme sur la variable à expliquer 'Price' 
+  ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/21c04d24-c4c9-4914-9d7a-dd0edb382507)
+  Ce graphique représente l'histogramme des fréquences des 
 
 
 
