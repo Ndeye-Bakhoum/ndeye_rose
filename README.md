@@ -78,7 +78,9 @@ Pour un paramètre de régularisation (C) fixé à 100, nous avons estimé 3 mod
 ### - C=10
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/21b03b2d-5125-4c9c-b1be-3ea42a971237)
 
+Dans le but de trouver des modèles plus perfomants que ceux obtenus précedement, nous avons rééstimer les 3 modèles mais cette fois ci en fesant passer le paramétre de régularisation de 100 à 10. Nous constatons que les modèles enregistrent des erreurs de prévisions plus élevées que ceux estimés ci dessus. Avec C=10, le meilleur modèle est obtenu avec le modele 0 SVR(kernel='linear', C=10) où on note les erreurs les plus faibles.
 
-
+### - C=1
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/633e9b87-a362-43bb-a929-3382cdfde056)
 
 
