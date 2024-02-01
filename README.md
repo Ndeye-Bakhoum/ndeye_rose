@@ -11,11 +11,11 @@ Notre objectif pour cette étude sera à partir d'un jeu de donnée, prédire un
 Nous avons choisi un ensemble de variables pour mener notre étude. Notre base de donnée est composée de 6 variables à savoir:
 
 ##### - Price:         Le prix de vente des maison
-#### - SquareFeet :   La surface de la maison                  
-#### - Bedrooms :     Le nombre de chambres              
-#### - Bathrooms :    Le nombre de salle de bains
-#### - YearBuilt :    L'année de construction de la maison             
-#### - Neighborhood : Le quartier où est situé la maison
+##### - SquareFeet :   La surface de la maison                  
+##### - Bedrooms :     Le nombre de chambres              
+##### - Bathrooms :    Le nombre de salle de bains
+##### - YearBuilt :    L'année de construction de la maison             
+##### - Neighborhood : Le quartier où est situé la maison
 
 Notre variable cible correspond au prix de vente du biens immobiliers 'Price'. Avant de passer à la modélisation, nous allons effectué un prétraitement de nos données (valeurs manquantes, outliers).
 
