@@ -93,9 +93,11 @@ Les ANN (Artificial Neural Network) sont des modèles de machine learning qui so
 - Couches cachées (Hidden Layer)
 - Couche de sortie (Output Layer)
 
-#### - modèle1 : 
+#### - modèle1 : n_neurones = 1000, Hidden_layer = 2, activation = 'relu'
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/85b1cf30-64f1-4fd5-867f-17529bb88d2d)
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/cf2f3885-b3bb-4c73-a29d-12ed3b9949b5)
 
-
+Nous avons construit un modèle ANN en fixant un nombre de neurones à 1000 sur deux couches cachés, la fonction d'activation utilisée sur ces couches est le 'relu'. La couche de sortie est fixée à 1 neurone. Le modèle est compilé en utilisant un optimiseur de type 'adam'
 
 
 
