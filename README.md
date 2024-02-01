@@ -58,7 +58,14 @@ L'etude de la corrélation entre nos variables est trés importante car il perme
 ##  5_ Etude de la relation entre les variables 'Price', 'Neighborhood' et 'SquareFeet'
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/5a7dc4e4-647e-4797-8923-35c8f92f436b)
 
-Nous constatons que la variable 'Neighborhood n'as pas de lien particulier entre les variables 'Price' et 'SquareFeet'. A savoir que le prix de vente des maisons ne dépend de la zone où elle est située, de meme ce n'est le fait qu'une maison soit situé en zone rural qu'elle aura une superficie plus importante
+Nous constatons que la variable 'Neighborhood n'as pas de lien particulier entre les variables 'Price' et 'SquareFeet'. A savoir que le prix de vente des maisons ne dépend de la zone où elle est située, de meme ce n'est le fait qu'une maison soit situé en zone rural qu'elle aura une superficie plus importante.
+
+# III_ Echantillonnage des données
+Avant de commencer à modéliser nos données, nous avons d'abord séparé notre variable cible 'Price' de nos variables explicatives. Ensuite nous avons encodé la variable 'Neighborhood' afin d'eviter des erreurs au moment de la normalisation des variables. On sépare nos données en deux ensemble avec un taux d'echantillonnage de 20% :
+- train: ensemble d'entrainement du modèle (80% des données)
+- test: ensemble d'evaluation du modèle (20% des données)
+
+# IV_ Modèles Machine Learning
 
 
 
