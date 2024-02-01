@@ -43,9 +43,11 @@ Le prix de vente maximun des maisons est estimé à 443335.494338 USD et le prix
   ##  2_ Histogramme sur la variable à expliquer 'Price' 
   ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/21c04d24-c4c9-4914-9d7a-dd0edb382507)
  
-  Ce graphique représente l'histogramme des fréquences des 
+Ce graphique représente l'histogramme  du prix de vente des maisons. Nous constatons que le nombre de maisons vendus à moins de 100000 USD est trés faible tout comme le nombre de maisons vendus à plus de 370000 USD. Par contre on retrouvera beaucoup de maisons qui sont vendus entre 100000 et 300000 USD.
 
+ ##  3_ Représentation grahique des modalités de la variable 'Neighborhood'
 
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/630262cc-8d2a-4a45-81a2-bda63676010e)
 
 
 
