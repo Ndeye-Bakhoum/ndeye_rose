@@ -66,10 +66,12 @@ Avant de commencer à modéliser nos données, nous avons d'abord séparé notre
 - test: ensemble d'evaluation du modèle (20% des données)
 
 # IV_ Modèles Machine Learning
+##  1_ Modèle SVM(Support Vector Machine)
+Une machine à vecteurs de support (SVM) est une classe d'algorithmes d'apprentissage automatique utilisée pour la classification et la régression. Les SVM peuvent être linéaires ou non linéaires en fonction du type de frontière de décision qu'ils construisent. Dans notre cas nous l'utiliserons pour faire une régression étant donnée que notre objectif est de prédire le prix de vente. Nous déciderons d'estimer des modèles SVR non lineaire car jugeant que nos données ne sont pas linéarement séparable.
+Ainsi nous avons estimé différents modèles SVR en fesant varier le kernel et le paramétre de régularisation C
 
-
-
-
+## - C=100
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/d9074420-76d0-4b7c-9558-033445e69d46)
 
 
 
