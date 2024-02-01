@@ -110,7 +110,11 @@ Afin de déterminer les paramétres optimales pouvant aboutir à un modèle plus
 - n_neurones = 200
 - hidden_layer = 2
 - activation = 'relu'
+Nous avons ensuite tuner le modèle en utilisant ces paramétres :
 
+#### - modèle3 : n_neurones = 200, Hidden_layer = 2, activation = 'relu'
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/5e820de9-f7a6-4e71-91e4-b71e0fcc966a)
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/87994eaf-a70e-4da3-8e37-b04cbb0662ea)
 
-
+Tout comme les autres modèles, on note que les erreurs de prévisions diminuent au fil des itérations. On constate également par rapport au deux modèles précedents que celui-ci est le plus performant (MSE et MAE plus petit). Cependant par rapport à notre meilleur modèle obtenu avec la méthode SVM, ce modèle est beaucoup moins performant.
 
