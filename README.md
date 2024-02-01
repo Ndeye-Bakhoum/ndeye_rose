@@ -50,6 +50,8 @@ Le graphique ci-dessous représente les différentes modalités de la variable '
 
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/630262cc-8d2a-4a45-81a2-bda63676010e)
 
+##  4_ Etude de la corrélation entre les variables
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/0cf171e4-1bd2-44ba-889e-d6b76799e8a1)
 
 
 
