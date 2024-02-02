@@ -1,9 +1,9 @@
 
-# DOSSIER SVM et Réseaux de Neurones 
+# DOSSIER SVM et Réseaux de Neurones Artificiels (ANN)
 
 ## Ndèye BAKHOUM Master2 ECAP 
 
-Notre objectif pour cette étude sera à partir d'un jeu de donnée, prédire une variable cible en utilisant des méthodes de Machine Learning à savoir les SVM(Support Vector Machine) et les réseaux de neurones et après nous essayerons de déterminer les variables importantes.
+Notre objectif pour cette étude sera à partir d'un jeu de donnée, prédire une variable cible en utilisant des méthodes de Machine Learning à savoir les SVM (Support Vector Machine) et les réseaux de neurones et après nous essayerons de déterminer les variables importantes.
 
 
 ### Description des données 
@@ -120,3 +120,10 @@ Nous avons ensuite tuner le modèle en utilisant ces paramètres :
 Tout comme les autres modèles, on note que les erreurs de prévisions diminuent au fil des itérations. On constate également par rapport au deux modèles précédents que celui-ci est le plus performant (MSE et MAE plus petit). Cependant par rapport à notre meilleur modèle obtenu avec la méthode SVM, ce modèle est beaucoup moins performant.
 
 ##  3_ Variables importantes
+![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/abbd027d-907f-4a7e-b7df-063cbf9c1392)
+
+Pour déterminer l'importance des variables, nous avons décidé d'estimer un modèle de RandomForest afin de savoir les variables qui peuvent influencer le prix de vente des maisons. Nous pouvons constater que sur nos 5 variables, la superficie (SquareFeet) est largement plus importante pour évaluer le prix de vente de la maison. Autrement dit plus la surface sera élevée et plus la maison aura un prix élevé. Comme autre variable importante nous avons le quartier (Neighborhood) qui peut aussi influencer le prix de vente. En effet le fait qu'une maison se trouve en zone urbaine peut devenir plus chère qu'une maison se trouvant en banlieue. On note aussi que le fait qu'une maison ait un nombre de chambre plus élevé aura un prix plus conséquent.
+
+
+
+
