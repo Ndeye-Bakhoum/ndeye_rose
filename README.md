@@ -58,7 +58,7 @@ L'étude de la corrélation entre nos variables est très importante car il perm
 ##  5_ Etude de la relation entre les variables 'Price', 'Neighborhood' et 'SquareFeet'
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/f337577d-db3a-4061-8e89-26d0a7efba8b)
 
-Nous constatons que la variable 'Neighborhood n'as pas de lien particulier entre les variables 'Price' et 'SquareFeet'. A savoir que le prix de vente des maisons ne dépend de la zone où elle est située, de même  ce n'est le fait qu'une maison soit situé en zone rural qu'elle aura une superficie plus importante.
+Nous constatons que la variable 'Neighborhood a un lien particulier entre les variables 'Price' et 'SquareFeet'. A savoir que le prix de vente des maisons peut dépendre de la zone où elle est située. Mais également la superficie de la maison peut varier en fonction des zones (Rural, Urbain, Banlieue).
 
 # III_ Echantillonnage des données
 Avant de commencer à modéliser nos données, nous avons d'abord séparé notre variable cible 'Price' de nos variables explicatives. Ensuite nous avons encodé la variable 'Neighborhood' afin d'éviter des erreurs au moment de la normalisation des variables. On sépare nos données en deux ensembles avec un taux d'échantillonnage de 20% :
@@ -119,12 +119,12 @@ Nous avons ensuite tuner le modèle en utilisant ces paramètres :
 
 Tout comme les autres modèles, on note que les erreurs de prévisions diminuent au fil des itérations. On constate également par rapport au deux modèles précédents que celui-ci est le plus performant (MSE et MAE plus petit). Cependant par rapport à notre meilleur modèle obtenu avec la méthode SVM, ce modèle est beaucoup moins performant.
 
-##  3_ Interprétation du modèle retenu : SVR(kernel='linear', C=100)
+# V_ Interprétation du modèle retenu : SVR(kernel='linear', C=100)
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/e07241ad-8cc3-46ad-8e46-79e12426642d)
 
 Parmi les différents modèles estimés, nous avons décidé de retenir le modèle SVR dont le noyau est linéaire et le paramètre de régularisation est fixé à 100. Les erreurs de prévisions de ce modèle sont les faibles et un coefficient de détermination plus élevé. Ce dernier est égal à 0.566733 autrement 56.6733 des fluctuations du prix de ventes des maisons sont expliquées par les variables explicatives. On note que les variables 'SquareFeet', 'Bedrooms' et 'Bathrooms' ont des coéfficients positifs à savoir si ces variables augmentent d'une unité, le prix de vente va augmenter aussi. Le coefficient de l’âge se révèle négative, on peut dire plus une maison sera ancienne et moins le prix sera élevé.
 
-##  4_ Variables importantes
+#  VI_ Variables importantes
 ![image](https://github.com/Ndeye-Bakhoum/ndeye_rose/assets/154429723/abbd027d-907f-4a7e-b7df-063cbf9c1392)
 
 Pour déterminer l'importance des variables, nous avons décidé d'estimer un modèle de RandomForest afin de savoir les variables qui peuvent influencer le prix de vente des maisons. Nous pouvons constater que sur nos 5 variables, la superficie (SquareFeet) est largement plus importante pour évaluer le prix de vente de la maison. Autrement dit plus la surface sera élevée et plus la maison aura un prix élevé. Comme autre variable importante nous avons le quartier (Neighborhood) qui peut aussi influencer le prix de vente. En effet le fait qu'une maison se trouve en zone urbaine peut devenir plus chère qu'une maison se trouvant en banlieue. On note aussi que le fait qu'une maison ait un nombre de chambre plus élevé aura un prix plus conséquent.
