@@ -1,0 +1,473 @@
+---
+title: "PROJET EN BIG DATA"
+author: "NDEYE BAKHOU"
+date: "2025-11-30"
+output: pdf_document
+---
+
+
+    PROJET  EN BIG DATA : ETUDE DE LA BASE DIABETE
+
+Dans ce projet, nous allons mener une étude sur le diabète en essayant de savoir les variables pertinentes pour l'expliquer. Nous allons procéder d'abord à une analyse exploiratoire des données puis faire une modélisation avec Sparklyr et h2o et terminer par une comparaison des différents modèles.
+
+    Libraries
+    
+```{r}
+library(readr)
+library(dplyr)
+library(corrplot)
+library(ggplot2)
+library(sparklyr)
+library(h2o)
+```
+    
+
+    Importation du jeu de données
+
+```{r read_csv}
+
+diabete <- read.csv("C:/Users/HP/Downloads/diabetes (1).csv", sep = ",",
+                    header = TRUE)
+str(diabete)
+
+```
+
+    I. Compréhension des données
+    
+    1. Nature des variables
+
+Notre jeu de données contient 768 observations et 9 variables. Ces dernières sont de différents types, nous avons:
+
+-Variables quantitatives
+
+Pregnancies
+Glucose
+BloodPressure
+SkinThickness
+Insulin
+BMI
+DiabetesPedigreeFunction
+Age
+
+-Variable qualitative binaire
+
+Outcome : 0 = Absence de diabète, 1 = Présence de diabète
+
+    2.Valeurs manquantes
+
+Nous constatons que dans notre base certaines variables comme la concentration de glucose (Glucose), la préssion arterielle (BloodPressure), l'épaisseur du pli cutané (SkinThickness), l'insulinémie sérique (Insulin)et l'indice masse corporelle (BMI) prennent la valeur 0 ce qui est impossible. Ces valeurs sont donc considérées comme manquantes.
+
+```{r dplyr}
+
+diabete %>%
+  summarise(
+    Glucose_0 = sum(Glucose == 0),
+    BloodPressure_0 = sum(BloodPressure == 0),
+    SkinThickness_0 = sum(SkinThickness == 0),
+    Insulin_0 = sum(Insulin == 0),
+    BMI_0 = sum(BMI == 0),
+  )
+
+```
+Notre base de données présentent des valeurs manquantes  sur ces variables.La variable qui présente la plus de valeurs abberantes est l'insulinémie avec 374 valeurs. Au total nous avons 658 valeurs manquantes ce qui nombreux donc on peut pas les supprimer. On va donc les imputer avec la médiane.
+
+```{r Base}
+
+variable <- c("Glucose", "BloodPressure", "SkinThickness", "Insulin", "BMI")
+
+diabete[variable] <- lapply(diabete[variable], function(x) 
+                            ifelse(x == 0, NA, x ) )
+
+```
+
+Pour imputer nos valeurs aberrantes, On considére la valeur 0 prise par ces variables comme données manqauntes. 
+
+
+```{r Base}
+
+diabete[variable] <- lapply(diabete[variable], function(x) 
+                            ifelse(is.na(x), median(x, na.rm = TRUE), x ) 
+                            )
+sum(is.na(diabete))
+
+```
+Pour ce faire on remplace les O par NA, ensuite, on impute ces valeurs manquantes par la médiane. Une fois l'imputation terminé, on constate que notre base ne présente plus de valeurs aberrantes.
+
+
+    3. Corrélation entre le taux de glucose et la probabilté de diabète
+
+```{r corrplot}
+
+correlation <- cor(diabete[, c("Glucose", "Outcome")], use = "complete.obs")
+
+correlation
+
+```
+Nous pouvons noter une corrélation modéré entre le taux de glucose et la probabilité d'avoir le diabète. C'est une relation lineaire positive donc une augmentation du taux de glucose augmente les risques d'avoir le diabète de 49%.
+
+    4. Les patients à risques
+    
+On va commencer par filtrer notre base en ne gardans que les patientes atteintes de diabète et ensuite obsérvé les statistiques des variables
+
+```{r dplyr}
+
+diabete %>%
+  filter(Outcome == 1) %>%
+  summarise(across(where(is.numeric), mean))
+
+```
+
+Avec ces résultats on peut dire que les patients à risques sont ceux qui ont en moyenne : 37 ans, une concentration de glucose de 142.1306, une insulinémie égale à 164.7015 µU/mL, une préssion artérielle de 75.1233 mm Hg et une indice masse corporelle de 35.3835.
+
+    II. Visualisation et Exploration
+    
+    1. Graphiques pertinentes pour visualiser les variables liées au diabète
+    
+Pour visualiser l'effet de nos différentes variables sur le diabète, nous construire des graphiques qui vont mettre en évidence une éventuelle relation entre ces variables et le diabète.
+ 
+    Histogramme du glucose selon le diabete
+
+```{r ggplot2}
+
+ggplot(diabete, aes(x = Glucose, fill = factor(Outcome, levels = c(0,1),
+                                    labels = c("Pas diabète", "diabète")))) + 
+  geom_density(alpha = 0.4) + 
+  labs(title = "Histogramme du Glucose selon le Statut Diabétique",
+       fill = "Statut Diabète")
+
+```
+Nous avons représenté l'histogramme du Glucose selon le fait fait qu'il y ai ou pas diabète. Pour visualiser la distribution de la variable Glucose, nous tracons la courbe de densité. Avec un alpha = 0.4 on peut voir comment les deux courbes se chevauchent. En obervant nos deux courbes de densité, on constate que la distribution des personnes non diabètiques contient des valeurs de glucose plus faibles alors que celle des personnes diabètiques englobent les valeurs de glucose plus. En conclusion les personnes ayant le diabète ont en moyenne des taux de glucose significativement plus élevés.
+
+    Boxplot de l'indice masse corporelle par rapport au diabète
+    
+```{r ggplot2}
+
+ggplot(diabete, aes(x = factor(Outcome), y = BMI, fill = factor(Outcome,                         levels = c(0,1),labels = c("Pas diabète", "diabète")))) + 
+geom_boxplot() + 
+labs(title = "Boxplot BMI selon le Statut Diabétique",
+    x = "Statut Diabete",
+    y = "BMI",
+    fill = "Statut diabete") 
+
+```
+Les boxplots de l'indice masse corporelle selon le statut du diabète permet de comparer les médianes entre les deux groupes. On constate une médiane plus basse pour les personnes non diabètiques et des valeurs moins élevées contrairement à celle des personnes diabètiques qui présentent une médiane et des valeurs plus élevées. En conclusion on peut dire que les patientes atteintes de diabète ont un indice masse corporelle plus élevées que celles qui n'ont pas de diabète.
+
+
+    Nuage de point entre la pression artérielle, l'insuline par rapport au         diabète
+
+```{r ggplot2}
+
+ggplot(diabete, aes(x = Glucose, y = Insulin, color = factor(Outcome,                       levels = c(0,1),labels = c("Pas diabète", "diabète")))) +
+geom_point(alpha = 0.6, size = 2) + 
+labs(title = "Insuline vs Glucose selon le Statut Diabétique",
+    x = "Glucose",
+    y = "Insulin",
+    color = "Diabète")
+
+```
+
+Ce graphique ci-dessus permet de mettre en évidence la relation entre l'insulinémie sérique et la concentration de glucose en fonction du statut de diabète. Nous constaons une relation croissante entre les deux variables en d'autres termes une augmentation de la concentration de glucose entraine une hausse du l'insuline. On note ainsi que le groupe des personnes atteintes de diabète ont des niveaux de glucose et d'insuline plus élevés.
+
+    2. Outliers 
+    
+Nous avons remarqué des outliers dans la représentation des boxplots entre l'indice masse corporelle (BMI) et le statut du diabète. Ce sont les valeurs extrêmes observées pour un indice masse corporelle supérieur à 50. De même pour la variable insuline, on constate des valeurs extrêmes  situées entre 600 µU/mL et 800 µU/mL, ces dernières peuvent être considérées comme des outliers.
+
+    Détecter les outliers par la méthode IQR
+
+```{r dplyr}
+
+diabete %>%
+  select(where(is.numeric)) %>%
+  summarise(across(everything(), ~{
+    Q1 <- quantile(.x, 0.25, na.rm = TRUE)
+    Q3 <- quantile(.x, 0.75, na.rm = TRUE)
+    IQR <- Q3 - Q1
+    borne_inf <- Q1 - 1.5 * IQR
+    borne_sup <- Q3 + 1.5 * IQR
+    sum(.x < borne_inf | .x > borne_sup, na.rm = TRUE)
+  }))
+
+```
+
+La plupart de nos variables contiennent des outliers à l'exception des variables Outcome et la concentration de glucose. La variable Insulin présente un trés grand nombre de valeurs extrêmes. Cela est dû par les valeurs anormales allant jusqu'à 800 µU/mL prise par la variable.
+
+    Traitement des outliers
+    
+```{r dplyr}
+
+diabete_n <- diabete %>%
+  mutate(across(where(is.numeric), ~{
+    Q1 <- quantile(.x, 0.25, na.rm = TRUE)
+    Q3 <- quantile(.x, 0.75, na.rm = TRUE)
+    IQR <- Q3 - Q1
+    borne_inf <- Q1 - 1.5 * IQR
+    borne_sup <- Q3 + 1.5 * IQR
+    mediane <- median(.x, na.rm = TRUE)
+    replace(.x, .x < borne_inf | .x > borne_sup, mediane)
+  })) 
+
+```
+
+Pour traiter nos outliers nous avons opté à une imputation par la médiane. C'est une méthode éfficace et robuste et permet d'imputer un grand nombre d'outliers tout en gardant la forme de la distribution.
+
+    3. La distribution des âges
+    
+```{r ggplot2}
+
+ggplot(diabete_n, aes(x = Age)) +
+geom_histogram(bins = 30, fill = "skyblue", color = "white") + 
+labs(title = "Distribution des Ages",
+     x = "Age",
+     y = "Fréquence")
+
+```
+
+Oui il y'a un biais dans la distribution des âges. On note plus précisement une asymétrie à droite, nous avons plus de patients âgés entre 20 et 30 ans par rapport à ceux âgés de plus de 50 ans.    
+    
+    III. Modélisation et Machine Learning avec Sparklyr
+    
+    1. Création des jeux de donnée Apprentissage et Test   
+    
+On va copier notre jeu de données dans Spark  
+
+
+```{r sparklyr}
+
+sc <- spark_connect(master = "local", version="3.5")
+
+sc
+
+```
+
+```{r sparklyr}
+
+tbl_diabete <- copy_to(sc,diabete_n, overwrite = TRUE)
+
+sdf_dim(tbl_diabete)
+
+```
+
+Aprés avoir bien chargé notre base de données sur Spark, nous allons le séparer en jeux données Apprentissage et Test.
+
+```{r sparklyr}
+
+donnees <- tbl_diabete %>%
+  sdf_random_split(appr = 0.7, test = 0.3, seed = 123456789)
+
+```
+
+```{r sparklyr}
+
+Apprentissage = donnees$appr
+
+Test = donnees$test
+
+```
+
+On a décidé de consacrer 70% de nos données pour l'apprentissage en d'autre terme ces 70% vont nous permettre d'entrainer notre modèle et les 30%  restant vont constituer notre echantillon de test sur lequel nous allons évaluer les performances du modèle.
+
+    2. Régression logistique avec Sparklyr sur la variable Outcome
+    
+```{r sparklyr}
+
+reg_log <- Apprentissage  %>%
+  ml_logistic_regression(Outcome~.)
+
+```
+ 
+```{r sparklyr}
+
+reg_log
+  
+```
+    
+    3. Les variables qui influencent plus la prédiction du diabète 
+    
+Le résumé du modèle permet de visualiser les variables qui contribuent à la prédiction du diabète. Parmi celles-ci nous avons la fonction de pedigree du diabète, l'indice masse corporelle, le nombre de grossesses et la concentration du glocuse. Par exemple une augmentation d'une unité de l'indice masse corporelle et de la concentation du glucose augmente la probabilité d'avoir le diabète respectivement de 9% et 3%.De même le fait d'avoir des antéccédants familiaux liées au diabète et pour les femmes d'être fréquement en état de grossesse favorise la probabilité d'avoir le diabète.
+
+
+    4. Evaluation des performance du modèle
+    
+Pour évaluer les performances de notre modèle, nous utilisons le jeux de données Test qui contiennent 30% de nos données.   
+
+```{r sparklyr}
+
+perf <- ml_evaluate(reg_log, Test)
+
+```
+
+
+```{r sparklyr}
+
+perf$area_under_roc()
+
+```
+Nous avons choisi comme métrique pour évaluer notre modèle AUC (Area Under Roc). Elle correspond à l'aire sous la courbe de ROC  et est principalement utilisée pour évaluer les performances des modèles de classification binaire. L'AUC quantifie la capacité globale du modèle à faire la distinction entre les classes positives et négatives. Dans notre modèle AUC = 0.8082 on peut dire que nous avons un trés bon modèle.
+
+   
+    5. Impact du déséqulibre des classes dans le modèle
+    
+Le déséquilibre des classes a un impact majeur sur les modèles de classification. Dans notre modèle un déséquilibre (Par exemple si la classe diabètique est minoritaire) entrainerait une mauvaise sensibilité et un taux élevés de faux négatif. Le modèle va donc mal estimer la probabilité d'être diabètique. Les métriques tel que l'accuracy élevé sont trompeuses donnant un faux sentiment de bon modèle.
+
+    IV. Comparaison Sparklyr vs H2O
+    
+    1. Régression logistique avec H2O sur la variable Outcome
+    
+Avant d'estimer nos modèles, nous commencons d'abord par charger nos données avec h2o.     
+    
+```{r h2o}
+
+h2o.init()
+diabete_h2o <- as.h2o(diabete_n)
+
+```
+    
+```{r h2o}
+
+h2o.describe(diabete_h2o)
+
+```
+
+Notre base a été bien chargé dans h2o.Pour modéliser la variable Outcome par la régression logistique avec h2o, nous devons au préalable transformer notre variable cible en factorielle. 
+
+
+```{r h2o}
+
+var_cible <- "Outcome"
+variables <- setdiff(colnames(diabete_h2o), var_cible)
+
+diabete_h2o[[var_cible]] <- as.factor(diabete_h2o[[var_cible]])
+
+```
+
+Maintenant nous allons découper notre jeux de donnée en ensemble d'apprentissage pour entrainer le modèle et en ensemble test pour evaluer le modèle. C'est ce découpage que nous allons utiliser pour l'ensemble des modèles que nous allons estimer.
+
+```{r h2o}
+
+ensemble <- h2o.splitFrame(diabete_h2o, ratios = 0.70, seed = 123456)
+
+training <- ensemble[[1]]
+test  <- ensemble[[2]]
+
+```
+
+A présent nous allons modéliser la variable Outcome par la régression logistique avec h2o. Nous allons entrainer notre modèle avec training qui regroupe 70% de nos données.
+
+```{r h2o}
+
+glm_model  <- h2o.glm(x = variables,
+                     y = var_cible ,
+                     training_frame = training,
+                     lambda_search = TRUE)
+
+```
+
+```{r h2o}
+
+glm_model@model$coefficients_table
+
+```
+L'estimation du modèle permet de connaitre les variables qui influencent la prédiction du diabète. Les trois variables qui augmentent plus la probabilité d'avoir le diabète sontla concentration du glucose, l'indice masse corporelle et la fonction du pedigree du diabète.
+ 
+   
+    1. Régression Random Forest avec H2O sur la variable Outcome
+
+Nous allons modéliser notre variable Outcome par la méthode du Random Forest (Foret Aleatoire). C'est un algorithme d'apprentissage automatique fondé sur un ensemble d'arbres de décision.
+
+```{r h2o}
+
+random_model  <- h2o.randomForest(x = variables,
+                     y = var_cible ,
+                     training_frame = training,
+                     ntrees = 100,
+                     max_depth = 20,
+                     nfolds = 5)
+
+```
+
+```{r h2o}
+
+h2o.varimp_plot(random_model)
+
+```
+Nous avons conservé le même découpage que la régression logistique (70% Apprentissage et 30% Test). L'estimation du modèle Random Forest sur 100 arbres permet de classer les variables importantes à savoir qui contribuent le plus à la probabilité d'avoir le diabète. Parmi celles ci nous avons la concentration du glucose, l'indice masse corporelle et l'âge.
+
+   
+    1. Régression Gradient Boosted Trees avec H2O sur la variable Outcome
+
+Nous allons utiliser maintenant la méthode du Gradient Boosting Trees pour modéliser la variable Outcome. C'est une méthode d’apprentissage supervisé qui construit une succession d’arbres dépendantes qui apprennent les uns des autres.
+
+```{r h2o}
+
+Gradient_model  <- h2o.gbm(x = variables,
+                     y = var_cible ,
+                     training_frame = training,
+                     ntrees = 100,
+                     max_depth = 20,
+                     nfolds = 5)
+```
+
+
+```{r h2o}
+
+h2o.varimp_plot(Gradient_model)
+
+```
+Nous avons estimer notre modèle Gradient Boosted Trees en conservant les paramétres que le modèle Random Forest (nombre d'arbre (100), nombre de sous ensemble (5) et profondeur des arbres (20)). Nous constatons que ce sont les même variables qui influencent la proabilité d'avoir le diabète.
+  
+    2. Evaluation des performances de nos différents modèles
+    
+    Régresion Logistique avec h2o
+    
+```{r h2o}
+
+perf1 <- h2o.performance(glm_model, newdata = test)
+
+perf1@metrics$AUC
+
+```
+Pour évaluer la performance notre modèle de régression logistique, nous utilisons le jeux de donnée test (30% des données) et la métrique AUC. Cette dernière est égale 0.8196 on peut donc dire que le modèle prédit bien la probabilité d'avoir le diabète.
+
+    Régresion Random Forest avec h2o
+    
+```{r h2o}
+
+perf2 <- h2o.performance(random_model, newdata = test)
+
+perf2@metrics$AUC
+
+```    
+Tout comme le modèle de régression logistique, nous utilisons la métrique AUC pour évaluer notre modèle Random Forest. Elle est égale ici à 0.8278 ce qui montre que le modèle est trés bon pour prédire la probabilité d'avoir le diabète.
+   
+    Regresion Gradient Boosted Trees avec h2o
+    
+```{r h2o}
+
+perf3 <- h2o.performance(Gradient_model, newdata = test)
+
+perf3@metrics$AUC
+
+```        
+Comme nous l'avons fait avec les deux modèles ci dessus, nous allons utiliser également la métrique AUC pour évaluer notre modèle Gradient Boosted Trees. Elles est égale à 0.8032 donc on peut dire que le modèle est bon pour prédire la probabilité d'avoir le diabète.
+
+
+    Comparaison de nos différentes modèles
+    
+```{r}
+
+AUC_metrics <- data.frame(
+  Modele = c("Régression Logistique Spark", 
+             "Régression Logistique H2O", 
+             "Random Forest H2O", 
+             "Gradient Boosted Trees H2O"),
+  
+AUC = c(perf$area_under_roc(), perf1@metrics$AUC, perf2@metrics$AUC,      perf3@metrics$AUC)
+  
+)
+
+AUC_metrics
+
+```
+    
+En nous basant sur l'AUC, Le meilleur modèle en terme de performance de prédiction est le modèle Random Forest. On note également que h2o nous donne de meilleurs performance avec la régression logistique que spark.    
+    
