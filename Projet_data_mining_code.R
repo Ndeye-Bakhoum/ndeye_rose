@@ -4,7 +4,7 @@
 # SOURCE: OCDE — Qualité des soins de santé (CONCORD)
 # VARIABLE CIBLE: Taux de survie nette à 5 ans (%) → 3 classes
 
-# Ndeye BAKHOUM & Aquila WILLIAMS
+# Ndeye BAKHOUM 
 ##############################################################################
 
 # LIBRAIRIES
