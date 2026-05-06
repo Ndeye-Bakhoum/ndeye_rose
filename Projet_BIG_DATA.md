@@ -3,7 +3,7 @@
 ![R](https://img.shields.io/badge/Language-R-blue.svg)
 ![Spark](https://img.shields.io/badge/Framework-Sparklyr-orange.svg)
 ![H2O](https://img.shields.io/badge/ML-H2O.ai-red.svg)
-![Status](https://img.shields.io/badge/Status-Completed-success.svg)
+
 
 ## Présentation du Projet
 Ce projet propose une étude approfondie de la base de données "Diabetes" visant à identifier les facteurs déterminants de la maladie. L'objectif est de comparer les performances de modèles de Machine Learning entraînés sur des environnements **Big Data** (Spark) et des solutions de **ML automatisé** (H2O).
@@ -11,20 +11,15 @@ Ce projet propose une étude approfondie de la base de données "Diabetes" visan
 ---
 ## Présentation des variables
 
-### Variables quantitatives
-
-**Pregnancies** :
-**Glucose** :
-**BloodPressure** :
-**SkinThickness** :
-**Insulin** :
-**BMI** :
-**DiabetesPedigreeFunction** :
-**Age** : 
-
-### Variable qualitative binaire
-
-**Outcome** : 0 = Absence de diabète, 1 = Présence de diabète
+##### - Pregnancies : Le nombre de grosseses
+##### - Glucose :
+##### - BloodPressure :
+##### - SkinThickness :
+##### - Insulin :
+##### - BMI :
+##### - DiabetesPedigreeFunction :
+##### - Age : 
+##### - Outcome : 0 = Absence de diabète, 1 = Présence de diabète
 ---
 
 ##  Pipeline Data Science
