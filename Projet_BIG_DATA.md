@@ -31,12 +31,18 @@ Ce projet propose une étude approfondie de la base de données "Diabetes" visan
 
 ### 2. Visualisation (DataViz)
 Utilisation de `ggplot2` pour mettre en évidence les relations clés :
-*   **Courbes de densité** : Distinction claire du taux de glucose entre patients sains et diabétiques[cite: 1].
+*   **Courbes de densité** : Distinction claire du taux de glucose entre patients sains et diabétiques.
 <img width="655" height="404" alt="image" src="https://github.com/user-attachments/assets/63c6d30c-1832-4586-9e35-fa3090a41b02" />
 
-*   **Boxplots** : Mise en évidence d'un Indice de Masse Corporelle (BMI) plus élevé chez les patients à risques[cite: 1].
-*   **Nuages de points** : Analyse de la relation croissante entre l'insuline et le glucose selon le statut diabétique[cite: 1].
+Nous avons représenté l'histogramme du Glucose selon le fait fait qu'il y ai ou pas diabète. Pour visualiser la distribution de la variable Glucose, nous tracons la courbe de densité. Avec un alpha = 0.4 on peut voir comment les deux courbes se chevauchent. En obervant nos deux courbes de densité, on constate que la distribution des personnes non diabètiques contient des valeurs de glucose plus faibles alors que celle des personnes diabètiques englobent les valeurs de glucose plus. En conclusion les personnes ayant le diabète ont en moyenne des taux de glucose significativement plus élevés.
+*   **Boxplots** : Mise en évidence d'un Indice de Masse Corporelle (BMI) plus élevé chez les patients à risques.
+<img width="655" height="404" alt="image" src="https://github.com/user-attachments/assets/02a429f0-6c6a-4392-9159-89a8329512b7" />
 
+Les boxplots de l'indice masse corporelle selon le statut du diabète permet de comparer les médianes entre les deux groupes. On constate une médiane plus basse pour les personnes non diabètiques et des valeurs moins élevées contrairement à celle des personnes diabètiques qui présentent une médiane et des valeurs plus élevées. En conclusion on peut dire que les patientes atteintes de diabète ont un indice masse corporelle plus élevées que celles qui n'ont pas de diabète.
+*   **Nuages de points** : Analyse de la relation croissante entre l'insuline et le glucose selon le statut diabétique.
+<img width="655" height="404" alt="image" src="https://github.com/user-attachments/assets/c2a44084-7d96-4cfe-805e-b58f152a5bc5" />
+
+Ce graphique ci-dessus permet de mettre en évidence la relation entre l'insulinémie sérique et la concentration de glucose en fonction du statut de diabète. Nous constaons une relation croissante entre les deux variables en d'autres termes une augmentation de la concentration de glucose entraine une hausse du l'insuline. On note ainsi que le groupe des personnes atteintes de diabète ont des niveaux de glucose et d'insuline plus élevés.
 ---
 
 ##  Modélisation & Machine Learning
