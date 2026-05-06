@@ -6,16 +6,33 @@
 ![Status](https://img.shields.io/badge/Status-Completed-success.svg)
 
 ## Présentation du Projet
-Ce projet propose une étude approfondie de la base de données "Diabetes" visant à identifier les facteurs déterminants de la maladie[cite: 1]. L'objectif est de comparer les performances de modèles de Machine Learning entraînés sur des environnements **Big Data** (Spark) et des solutions de **ML automatisé** (H2O)[cite: 1].
+Ce projet propose une étude approfondie de la base de données "Diabetes" visant à identifier les facteurs déterminants de la maladie. L'objectif est de comparer les performances de modèles de Machine Learning entraînés sur des environnements **Big Data** (Spark) et des solutions de **ML automatisé** (H2O).
 
+---
+## Présentation des variables
+
+### Variables quantitatives
+
+**Pregnancies** :
+**Glucose** :
+**BloodPressure** :
+**SkinThickness** :
+**Insulin** :
+**BMI** :
+**DiabetesPedigreeFunction** :
+**Age** : 
+
+### Variable qualitative binaire
+
+**Outcome** : 0 = Absence de diabète, 1 = Présence de diabète
 ---
 
 ##  Pipeline Data Science
 
 ### 1. Exploration & Nettoyage (Data Cleaning)
-*   **Analyse des types** : Étude de 768 observations et 9 variables (8 quantitatives, 1 binaire)[cite: 1].
-*   **Traitement des valeurs aberrantes** : Identification des valeurs "0" impossibles pour le Glucose, le BMI et l'Insuline[cite: 1].
-*   **Imputation robuste** : Remplacement des valeurs manquantes et des outliers par la **médiane** pour stabiliser la distribution[cite: 1].
+*   **Analyse des types** : Étude de 768 observations et 9 variables (8 quantitatives, 1 binaire).
+*   **Traitement des valeurs aberrantes** : Identification des valeurs "0" impossibles pour le Glucose, le BMI et l'Insuline.
+*   **Imputation robuste** : Remplacement des valeurs manquantes et des outliers par la **médiane** pour stabiliser la distribution.
 
 ### 2. Visualisation (DataViz)
 Utilisation de `ggplot2` pour mettre en évidence les relations clés :
@@ -28,38 +45,30 @@ Utilisation de `ggplot2` pour mettre en évidence les relations clés :
 ##  Modélisation & Machine Learning
 
 ###  Sparklyr (Environnement Spark)
-*   **Modèle** : Régression Logistique[cite: 1].
-*   **Découpage** : 70% Apprentissage / 30% Test[cite: 1].
-*   **Résultat** : Une AUC de **0.8082**, prouvant une excellente capacité de classification[cite: 1].
+*   **Modèle** : Régression Logistique.
+*   **Découpage** : 70% Apprentissage / 30% Test.
+*   **Résultat** : Une AUC de **0.8082**, prouvant une excellente capacité de classification.
 
 ###  H2O Framework
-Comparaison de trois algorithmes avec validation croisée (`nfolds = 5`)[cite: 1] :
-*   **Generalized Linear Model (GLM)**[cite: 1].
-*   **Random Forest (DRF)** : 100 arbres, profondeur 20[cite: 1].
-*   **Gradient Boosting Machine (GBM)**[cite: 1].
+Comparaison de trois algorithmes avec validation croisée (`nfolds = 5`) :
+*   **Generalized Linear Model (GLM)**.
+*   **Random Forest (DRF)** : 100 arbres, profondeur 20.
+*   **Gradient Boosting Machine (GBM)**.
 
 ---
 
 ## Résultats & Comparaison Finale
 
-L'évaluation a été réalisée sur l'échantillon Test à l'aide de la métrique **AUC** (Area Under Curve)[cite: 1] :
+L'évaluation a été réalisée sur l'échantillon Test à l'aide de la métrique **AUC** (Area Under Curve) :
 
 | Modèle | Librairie | Score AUC |
 | :--- | :--- | :--- |
-| 🏆 **Random Forest** | **H2O** | **0.8278**[cite: 1] |
-| 🥈 **Régression Logistique** | **H2O** | **0.8196**[cite: 1] |
-| 🥉 **Régression Logistique** | **Sparklyr** | **0.8082**[cite: 1] |
-| 🐢 **Gradient Boosted Trees** | **H2O** | **0.8032**[cite: 1] |
+| **Random Forest** | **H2O** | **0.8278** |
+| **Régression Logistique** | **H2O** | **0.8196** |
+| **Régression Logistique** | **Sparklyr** | **0.8082** |
+| **Gradient Boosted Trees** | **H2O** | **0.8032** |
 
-**Conclusion** : Le modèle **Random Forest** d'H2O offre la meilleure précision prédictive[cite: 1]. Les variables les plus influentes sont la **concentration en glucose**, l'**IMC (BMI)** et l'**âge**[cite: 1].
-
----
-
-## 📂 Structure du dépôt
-*   `Projet_BIG_DATA.Rmd` : Script source contenant l'intégralité de l'analyse et du code R[cite: 1].
-*   `diabetes.csv` : Jeu de données utilisé[cite: 1].
-*   `README.md` : Documentation du projet.
+**Conclusion** : Le modèle **Random Forest** d'H2O offre la meilleure précision prédictive. Les variables les plus influentes sont la **concentration en glucose**, l'**IMC (BMI)** et l'**âge**.
 
 ---
-**Auteur** : NDEYE BAKHOUM 
-**Formation** : Master en Économie de la Santé
+
