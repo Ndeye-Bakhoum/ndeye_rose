@@ -11,7 +11,7 @@ Ce projet propose une étude approfondie de la base de données "Diabetes" visan
 ---
 ## Présentation des variables
 
-##### - Pregnancies : Le nombre de grosseses
+*  **Pregnancies** : Le nombre de grosseses
 ##### - Glucose :
 ##### - BloodPressure :
 ##### - SkinThickness :
@@ -43,6 +43,7 @@ Les boxplots de l'indice masse corporelle selon le statut du diabète permet de 
 <img width="655" height="404" alt="image" src="https://github.com/user-attachments/assets/c2a44084-7d96-4cfe-805e-b58f152a5bc5" />
 
 Ce graphique ci-dessus permet de mettre en évidence la relation entre l'insulinémie sérique et la concentration de glucose en fonction du statut de diabète. Nous constaons une relation croissante entre les deux variables en d'autres termes une augmentation de la concentration de glucose entraine une hausse du l'insuline. On note ainsi que le groupe des personnes atteintes de diabète ont des niveaux de glucose et d'insuline plus élevés.
+
 ---
 
 ##  Modélisation & Machine Learning
