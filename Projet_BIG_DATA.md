@@ -32,6 +32,8 @@ Ce projet propose une étude approfondie de la base de données "Diabetes" visan
 ### 2. Visualisation (DataViz)
 Utilisation de `ggplot2` pour mettre en évidence les relations clés :
 *   **Courbes de densité** : Distinction claire du taux de glucose entre patients sains et diabétiques[cite: 1].
+<img width="655" height="404" alt="image" src="https://github.com/user-attachments/assets/63c6d30c-1832-4586-9e35-fa3090a41b02" />
+
 *   **Boxplots** : Mise en évidence d'un Indice de Masse Corporelle (BMI) plus élevé chez les patients à risques[cite: 1].
 *   **Nuages de points** : Analyse de la relation croissante entre l'insuline et le glucose selon le statut diabétique[cite: 1].
 
