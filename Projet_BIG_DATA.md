@@ -11,15 +11,15 @@ Ce projet propose une étude approfondie de la base de données "Diabetes" visan
 ---
 ## Présentation des variables
 
-*  **Pregnancies** : Le nombre de grosseses
-##### - Glucose :
-##### - BloodPressure :
-##### - SkinThickness :
-##### - Insulin :
-##### - BMI :
-##### - DiabetesPedigreeFunction :
-##### - Age : 
-##### - Outcome : 0 = Absence de diabète, 1 = Présence de diabète
+*  **Pregnancies** : Le nombre de grossesses que la patiente a eu
+*  **Glucose** : Concentration de glucose plasmatique
+*  **BloodPressure** : Pression artérielle diastolique
+*  **SkinThickness** : Epaisseur du pli cutané tricipital
+*  **Insulin** : Insulinémie sérique
+*  **BMI** : Indice de masse corporelle
+*  **DiabetesPedigreeFunction** : Fonction de pedigree du diabète qui mesure les antécédents familiaux
+*  **Age** : Age de la patiente
+*  **Outcome** : 0 = Absence de diabète, 1 = Présence de diabète
 ---
 
 ##  Pipeline Data Science
@@ -72,7 +72,9 @@ L'évaluation a été réalisée sur l'échantillon Test à l'aide de la métriq
 | **Régression Logistique** | **Sparklyr** | **0.8082** |
 | **Gradient Boosted Trees** | **H2O** | **0.8032** |
 
-**Conclusion** : Le modèle **Random Forest** d'H2O offre la meilleure précision prédictive. Les variables les plus influentes sont la **concentration en glucose**, l'**IMC (BMI)** et l'**âge**.
+**Conclusion** : Le modèle **Random Forest** d'H2O offre la meilleure précision prédictive. Les variables les plus influentes sont la **concentration en glucose**, l'**Indice masse corporelle** et l'**âge**.
+<img width="655" height="404" alt="image" src="https://github.com/user-attachments/assets/1ba53169-a3e5-4f32-bfad-923c71c8e13c" />
+
 
 ---
 
